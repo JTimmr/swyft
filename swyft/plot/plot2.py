@@ -153,8 +153,12 @@ def plot_1d(
     if contours:
         contour1d(zm, v, levels, ax=ax, color=color)
     ax.plot(zm, v, color=color)
-    ax.set_xlim([zm.min(), zm.max()])
-    ax.set_ylim([-v.max() * 0.05, v.max() * 1.1])
+    try:
+        ax.set_xlim([zm.min(), zm.max()])
+        ax.set_ylim([-v.max() * 0.05, v.max() * 1.1])
+    except AttributeError:
+        ax.xlim([zm.min(), zm.max()])
+        ax.ylim([-v.max() * 0.05, v.max() * 1.1])
 
 
 #    # Diagnostics
